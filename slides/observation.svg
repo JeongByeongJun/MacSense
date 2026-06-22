@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1700 500" font-family="'Pretendard', 'Apple SD Gothic Neo', sans-serif">
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" orient="auto">
+      <polygon points="0,0 12,6 0,12" fill="#1A2B5C"/>
+    </marker>
+  </defs>
+
+  <!-- ============== STAGE 01 — CGEventTap ============== -->
+  <g transform="translate(40, 80)">
+    <!-- box -->
+    <rect x="0" y="0" width="680" height="340" rx="8" fill="none" stroke="#1A2B5C" stroke-width="2"/>
+
+    <!-- stage number badge -->
+    <circle cx="40" cy="40" r="22" fill="#1A2B5C"/>
+    <text x="40" y="48" font-family="'Geist Mono', monospace" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">01</text>
+
+    <!-- title -->
+    <text x="80" y="48" font-family="'Geist Mono', monospace" font-size="36" font-weight="700" fill="#1A2B5C">CGEventTap</text>
+
+    <!-- korean caption -->
+    <text x="40" y="110" font-size="28" font-weight="600" fill="#1A2B5C">마우스 클릭 캡처</text>
+    <text x="40" y="142" font-size="18" fill="#4A567A">시스템 전역 leftMouseDown 이벤트 수신</text>
+
+    <!-- divider -->
+    <line x1="40" y1="180" x2="640" y2="180" stroke="#1A2B5C" stroke-width="1" stroke-dasharray="3 4"/>
+
+    <!-- output -->
+    <text x="40" y="216" font-family="'Geist Mono', monospace" font-size="13" font-weight="600" letter-spacing="3" fill="#4A567A">OUTPUT</text>
+    <text x="40" y="258" font-family="'Geist Mono', monospace" font-size="22" font-weight="500" fill="#1A2B5C">x = 1280, y = 420</text>
+    <text x="40" y="296" font-family="'Geist Mono', monospace" font-size="22" font-weight="500" fill="#1A2B5C">type = .leftMouseDown</text>
+  </g>
+
+  <!-- ============== ARROW ============== -->
+  <g transform="translate(740, 250)">
+    <line x1="0" y1="0" x2="200" y2="0" stroke="#1A2B5C" stroke-width="2.5" marker-end="url(#arrow)"/>
+    <text x="100" y="-16" font-family="'Geist Mono', monospace" font-size="16" font-weight="600" fill="#4A567A" text-anchor="middle">x , y</text>
+  </g>
+
+  <!-- ============== STAGE 02 — AXUIElement ============== -->
+  <g transform="translate(980, 80)">
+    <rect x="0" y="0" width="680" height="340" rx="8" fill="none" stroke="#1A2B5C" stroke-width="2"/>
+
+    <!-- stage number badge -->
+    <circle cx="40" cy="40" r="22" fill="#1A2B5C"/>
+    <text x="40" y="48" font-family="'Geist Mono', monospace" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">02</text>
+
+    <!-- title -->
+    <text x="80" y="48" font-family="'Geist Mono', monospace" font-size="36" font-weight="700" fill="#1A2B5C">AXUIElement</text>
+
+    <!-- korean caption -->
+    <text x="40" y="110" font-size="28" font-weight="600" fill="#1A2B5C">UI 요소 식별</text>
+    <text x="40" y="142" font-size="18" fill="#4A567A">Accessibility API · 폴백 체인 (title→desc→help)</text>
+
+    <!-- divider -->
+    <line x1="40" y1="180" x2="640" y2="180" stroke="#1A2B5C" stroke-width="1" stroke-dasharray="3 4"/>
+
+    <!-- output -->
+    <text x="40" y="216" font-family="'Geist Mono', monospace" font-size="13" font-weight="600" letter-spacing="3" fill="#4A567A">OUTPUT</text>
+    <text x="40" y="258" font-size="22" font-weight="500" fill="#1A2B5C">role: AXMenuItem · label: 새로운 폴더</text>
+    <text x="40" y="296" font-size="20" font-weight="500" fill="#1A2B5C">path: Finder › 파일 › 새로운 폴더</text>
+  </g>
+
+</svg>

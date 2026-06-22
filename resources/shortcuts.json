@@ -1,0 +1,124 @@
+{
+  "shortcuts": [
+    {
+      "appAliases": ["Finder", "파인더"],
+      "matchAliases": ["New Folder", "새 폴더", "새로운 폴더"],
+      "keys": "⌘⇧N",
+      "description": "Finder에서 새 폴더 만들기"
+    },
+    {
+      "appAliases": ["Finder", "파인더"],
+      "matchAliases": ["Get Info", "정보 가져오기"],
+      "keys": "⌘I",
+      "description": "파일 정보 보기"
+    },
+    {
+      "appAliases": ["Finder", "파인더"],
+      "matchAliases": ["Duplicate", "복제"],
+      "keys": "⌘D",
+      "description": "파일 복제"
+    },
+    {
+      "appAliases": ["Finder", "파인더"],
+      "matchAliases": ["Move to Trash", "휴지통으로 이동"],
+      "keys": "⌘⌫",
+      "description": "휴지통으로 이동"
+    },
+    {
+      "appAliases": ["Finder", "파인더"],
+      "matchAliases": ["Empty Trash", "휴지통 비우기"],
+      "keys": "⌘⇧⌫",
+      "description": "휴지통 비우기"
+    },
+    {
+      "appAliases": ["Finder", "파인더"],
+      "matchAliases": ["Connect to Server", "서버에 연결"],
+      "keys": "⌘K",
+      "description": "서버에 연결"
+    },
+    {
+      "appAliases": ["Finder", "파인더"],
+      "matchAliases": ["Quick Look", "훑어보기"],
+      "keys": "Space",
+      "description": "Quick Look으로 미리보기"
+    },
+    {
+      "appAliases": ["Finder", "파인더"],
+      "matchAliases": ["New Tab", "새 탭"],
+      "keys": "⌘T",
+      "description": "Finder 새 탭 열기"
+    },
+    {
+      "appAliases": ["Google Chrome", "Chrome", "크롬"],
+      "matchAliases": ["New Tab", "새 탭"],
+      "keys": "⌘T",
+      "description": "Chrome 새 탭 열기"
+    },
+    {
+      "appAliases": ["Google Chrome", "Chrome", "크롬"],
+      "matchAliases": ["New Window", "새 창", "새 윈도우"],
+      "keys": "⌘N",
+      "description": "Chrome 새 창 열기"
+    },
+    {
+      "appAliases": ["Google Chrome", "Chrome", "크롬"],
+      "matchAliases": ["Reload", "Reload This Page", "새로고침", "다시 로드"],
+      "keys": "⌘R",
+      "description": "현재 페이지 새로고침"
+    },
+    {
+      "appAliases": ["Google Chrome", "Chrome", "크롬"],
+      "matchAliases": ["Bookmark This Tab", "Bookmark", "북마크", "책갈피"],
+      "keys": "⌘D",
+      "description": "현재 탭 북마크 추가"
+    },
+    {
+      "appAliases": ["Google Chrome", "Chrome", "크롬"],
+      "matchAliases": ["Find", "찾기"],
+      "keys": "⌘F",
+      "description": "페이지에서 찾기"
+    },
+    {
+      "appAliases": ["Google Chrome", "Chrome", "크롬"],
+      "matchAliases": ["Downloads", "다운로드"],
+      "keys": "⌘⇧J",
+      "description": "다운로드 목록 열기"
+    },
+    {
+      "appAliases": ["Google Chrome", "Chrome", "크롬"],
+      "matchAliases": ["History", "방문 기록", "기록"],
+      "keys": "⌘Y",
+      "description": "방문 기록 열기"
+    },
+    {
+      "appAliases": ["Notes", "메모"],
+      "matchAliases": ["New Note", "새로운 메모", "새 메모"],
+      "keys": "⌘N",
+      "description": "새 메모 만들기"
+    },
+    {
+      "appAliases": ["Notes", "메모"],
+      "matchAliases": ["New Folder", "새 폴더"],
+      "keys": "⇧⌘N",
+      "description": "새 메모 폴더 만들기"
+    },
+    {
+      "appAliases": ["Notes", "메모"],
+      "matchAliases": ["Checklist", "체크리스트"],
+      "keys": "⌘⇧L",
+      "description": "체크리스트 추가"
+    },
+    {
+      "appAliases": ["Notes", "메모"],
+      "matchAliases": ["Bold", "볼드", "굵게"],
+      "keys": "⌘B",
+      "description": "선택한 텍스트 굵게"
+    },
+    {
+      "appAliases": ["Notes", "메모"],
+      "matchAliases": ["Find", "찾기"],
+      "keys": "⌘F",
+      "description": "메모에서 찾기"
+    }
+  ]
+}

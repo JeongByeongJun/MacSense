@@ -1,0 +1,12 @@
+.DS_Store
+
+# Local agent/tooling state
+.claude/
+.omc/
+tmp/
+
+# Build outputs
+build/
+mactest
+
+# macOS app runtime data stays outside the repo under ~/Library/Application Support/MacSense

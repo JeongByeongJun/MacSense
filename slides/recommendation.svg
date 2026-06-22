@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1700 500" font-family="'Pretendard', 'Apple SD Gothic Neo', sans-serif">
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" orient="auto">
+      <polygon points="0,0 12,6 0,12" fill="#1A2B5C"/>
+    </marker>
+  </defs>
+
+  <!-- ============== STAGE 05 — ShortcutDB ============== -->
+  <g transform="translate(40, 80)">
+    <rect x="0" y="0" width="680" height="340" rx="8" fill="none" stroke="#1A2B5C" stroke-width="2"/>
+
+    <circle cx="40" cy="40" r="22" fill="#1A2B5C"/>
+    <text x="40" y="48" font-family="'Geist Mono', monospace" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">05</text>
+
+    <text x="80" y="48" font-family="'Geist Mono', monospace" font-size="36" font-weight="700" fill="#1A2B5C">ShortcutDB</text>
+
+    <text x="40" y="110" font-size="28" font-weight="600" fill="#1A2B5C">단축키 DB 매칭</text>
+    <text x="40" y="142" font-size="18" fill="#4A567A">5개 앱 · 24개 엔트리 · 한 / 영 별칭 매칭</text>
+
+    <line x1="40" y1="180" x2="640" y2="180" stroke="#1A2B5C" stroke-width="1" stroke-dasharray="3 4"/>
+
+    <text x="40" y="216" font-family="'Geist Mono', monospace" font-size="13" font-weight="600" letter-spacing="3" fill="#4A567A">HIT</text>
+    <text x="40" y="258" font-size="22" font-weight="500" fill="#1A2B5C">💡 ⌘⇧N — Finder에서 새 폴더 만들기</text>
+    <text x="40" y="296" font-family="'Geist Mono', monospace" font-size="16" font-weight="500" fill="#4A567A">→ macOS 알림</text>
+  </g>
+
+  <!-- ============== ARROW (DB miss → LLM fallback) ============== -->
+  <g transform="translate(740, 250)">
+    <line x1="0" y1="0" x2="200" y2="0" stroke="#1A2B5C" stroke-width="2.5" marker-end="url(#arrow)"/>
+    <text x="100" y="-16" font-family="'Geist Mono', monospace" font-size="16" font-weight="600" fill="#4A567A" text-anchor="middle">miss</text>
+  </g>
+
+  <!-- ============== STAGE 06 — LLMClient ============== -->
+  <g transform="translate(980, 80)">
+    <rect x="0" y="0" width="680" height="340" rx="8" fill="none" stroke="#1A2B5C" stroke-width="2"/>
+
+    <circle cx="40" cy="40" r="22" fill="#1A2B5C"/>
+    <text x="40" y="48" font-family="'Geist Mono', monospace" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">06</text>
+
+    <text x="80" y="48" font-family="'Geist Mono', monospace" font-size="36" font-weight="700" fill="#1A2B5C">LLMClient</text>
+
+    <text x="40" y="110" font-size="28" font-weight="600" fill="#1A2B5C">AI 폴백 추천</text>
+    <text x="40" y="142" font-size="18" fill="#4A567A">Groq · Llama 3.3 70B · 1초 내 응답</text>
+
+    <line x1="40" y1="180" x2="640" y2="180" stroke="#1A2B5C" stroke-width="1" stroke-dasharray="3 4"/>
+
+    <text x="40" y="216" font-family="'Geist Mono', monospace" font-size="13" font-weight="600" letter-spacing="3" fill="#4A567A">AI OUTPUT</text>
+    <text x="40" y="258" font-size="22" font-weight="500" fill="#1A2B5C">🤖 Automator — 프로필 열기 자동화</text>
+    <text x="40" y="296" font-family="'Geist Mono', monospace" font-size="16" font-weight="500" fill="#4A567A">→ macOS 알림</text>
+  </g>
+
+</svg>

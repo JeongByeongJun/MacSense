@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" rel="stylesheet">
+<style>
+  @font-face {
+    font-family: 'GeistMono';
+    src: url('file:///Users/Jun/.claude/skills/canvas-design/canvas-fonts/GeistMono-Regular.ttf') format('truetype');
+    font-weight: 400;
+  }
+  @font-face {
+    font-family: 'GeistMono';
+    src: url('file:///Users/Jun/.claude/skills/canvas-design/canvas-fonts/GeistMono-Bold.ttf') format('truetype');
+    font-weight: 700;
+  }
+
+  :root {
+    --ink: #1A2B5C;
+    --ink-soft: #4A567A;
+    --slate: #B8BFD0;
+    --slate-faint: #E4E7F0;
+    --paper: #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    width: 1900px; height: 900px;
+    background: var(--paper);
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', sans-serif;
+    color: var(--ink);
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .stage {
+    position: relative;
+    width: 1900px;
+    height: 900px;
+    padding: 90px 100px 90px 100px;
+  }
+
+  /* corner reference markers — like specimen card edges */
+  .corner { position: absolute; width: 18px; height: 18px; border: 1.5px solid var(--ink); }
+  .corner.tl { top: 36px; left: 36px; border-right: none; border-bottom: none; }
+  .corner.tr { top: 36px; right: 36px; border-left: none; border-bottom: none; }
+  .corner.bl { bottom: 36px; left: 36px; border-right: none; border-top: none; }
+  .corner.br { bottom: 36px; right: 36px; border-left: none; border-top: none; }
+
+  .meta-top {
+    position: absolute;
+    top: 50px;
+    left: 100px;
+    font-family: 'GeistMono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+  }
+  .meta-top .dot { display: inline-block; width: 4px; height: 4px; background: var(--ink); margin: 0 14px 2px; vertical-align: middle; }
+
+  .meta-right {
+    position: absolute;
+    top: 50px;
+    right: 100px;
+    font-family: 'GeistMono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+  }
+
+  .meta-bottom {
+    position: absolute;
+    bottom: 48px;
+    left: 100px;
+    right: 100px;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'GeistMono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    color: var(--slate);
+    text-transform: uppercase;
+  }
+
+  .row {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 80px;
+    width: 100%;
+    height: 100%;
+    padding-top: 50px;
+  }
+
+  .station {
+    flex: 1;
+    position: relative;
+    padding: 36px 0 0 0;
+  }
+
+  .ordinal {
+    font-family: 'GeistMono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.32em;
+    color: var(--ink);
+    margin-bottom: 26px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .ordinal::before {
+    content: "";
+    display: inline-block;
+    width: 28px;
+    height: 1.5px;
+    background: var(--ink);
+  }
+
+  .title {
+    font-family: 'GeistMono', monospace;
+    font-size: 56px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    line-height: 1.0;
+    margin-bottom: 18px;
+  }
+
+  .subtitle-ko {
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+
+  .subtitle-en {
+    font-family: 'GeistMono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    margin-bottom: 38px;
+  }
+
+  .rule {
+    width: 100%;
+    height: 1px;
+    background: var(--ink);
+    opacity: 0.9;
+    margin-bottom: 28px;
+  }
+
+  .body {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ink);
+    margin-bottom: 30px;
+    max-width: 92%;
+    letter-spacing: -0.005em;
+  }
+
+  .code-block {
+    font-family: 'GeistMono', monospace;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink);
+    padding: 16px 20px;
+    border: 1px solid var(--ink);
+    background: var(--paper);
+    margin-bottom: 30px;
+    letter-spacing: -0.005em;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .code-block .kw { color: var(--ink); font-weight: 700; }
+  .code-block .arg { color: var(--ink-soft); }
+
+  .output-label {
+    font-family: 'GeistMono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.36em;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .output-label::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--slate);
+  }
+
+  .specimen {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    column-gap: 18px;
+    row-gap: 10px;
+    font-family: 'GeistMono', monospace;
+    font-size: 14px;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+  .specimen .k {
+    color: var(--ink-soft);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-size: 11px;
+    padding-top: 3px;
+  }
+  .specimen .v {
+    color: var(--ink);
+    font-weight: 500;
+    letter-spacing: -0.005em;
+  }
+  .specimen .v.ko {
+    font-family: 'Pretendard', -apple-system, sans-serif;
+    font-weight: 500;
+  }
+
+  /* connecting axis */
+  .axis {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 110px;
+    z-index: 5;
+    pointer-events: none;
+  }
+  .axis-line {
+    width: 100%;
+    height: 1.5px;
+    background: var(--ink);
+    position: relative;
+  }
+  .axis-arrow {
+    position: absolute;
+    right: -1px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-left: 11px solid var(--ink);
+  }
+  .axis-tick-left, .axis-tick-right {
+    position: absolute;
+    width: 1px;
+    height: 9px;
+    background: var(--ink);
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .axis-tick-left { left: 0; }
+  .axis-tick-right { right: 11px; }
+  .axis-label {
+    text-align: center;
+    margin-top: 14px;
+    font-family: 'GeistMono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+  }
+
+  /* mouse icon */
+  .mouse-glyph {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 64px;
+    height: 64px;
+  }
+
+</style>
+</head>
+<body>
+<div class="stage">
+
+  <span class="corner tl"></span>
+  <span class="corner tr"></span>
+  <span class="corner bl"></span>
+  <span class="corner br"></span>
+
+  <div class="meta-top">
+    MACSENSE <span class="dot"></span> OBSERVATION <span class="dot"></span> PIPELINE / 01–02
+  </div>
+  <div class="meta-right">FIG. 01</div>
+
+  <div class="row">
+
+    <!-- STATION 01 -->
+    <div class="station">
+      <div class="ordinal">01 &nbsp;/&nbsp; CAPTURE</div>
+      <div class="title">CGEventTap</div>
+      <div class="subtitle-ko">마우스 클릭 캡처</div>
+      <div class="subtitle-en">EVENT LISTENER · NO POLLING</div>
+      <div class="rule"></div>
+
+      <div class="body">
+        시스템 전역의 <strong>leftMouseDown</strong> 이벤트를
+        커널 레벨 콜백으로 수신.
+        클릭이 없으면 CPU는 정지 상태로 대기한다.
+      </div>
+
+      <div class="code-block">
+        <span class="kw">CGEvent</span>.<span class="kw">tapCreate</span>(<span class="arg">.cgSessionEventTap</span>, ...)
+      </div>
+
+      <div class="output-label">OUT</div>
+      <div class="specimen">
+        <div class="k">x</div>     <div class="v">1280.0</div>
+        <div class="k">y</div>     <div class="v">420.0</div>
+        <div class="k">type</div>  <div class="v">.leftMouseDown</div>
+      </div>
+    </div>
+
+    <!-- AXIS -->
+    <div class="axis">
+      <div class="axis-line">
+        <span class="axis-tick-left"></span>
+        <span class="axis-tick-right"></span>
+        <span class="axis-arrow"></span>
+      </div>
+      <div class="axis-label">x, y</div>
+    </div>
+
+    <!-- STATION 02 -->
+    <div class="station">
+      <div class="ordinal">02 &nbsp;/&nbsp; IDENTIFY</div>
+      <div class="title">AXUIElement</div>
+      <div class="subtitle-ko">UI 요소 식별</div>
+      <div class="subtitle-en">ACCESSIBILITY API · FALLBACK CHAIN</div>
+      <div class="rule"></div>
+
+      <div class="body">
+        좌표가 가리키는 UI 요소의 <strong>Role</strong>·<strong>Title</strong>·경로를 추출.
+        title이 비면 description → help → 자식 라벨 순으로 폴백.
+      </div>
+
+      <div class="code-block">
+        <span class="kw">AXUIElement</span>CopyElementAtPosition(<span class="arg">systemWide, x, y</span>)
+      </div>
+
+      <div class="output-label">OUT</div>
+      <div class="specimen">
+        <div class="k">role</div>  <div class="v">AXMenuItem</div>
+        <div class="k">label</div> <div class="v ko">새로운 폴더</div>
+        <div class="k">path</div>  <div class="v ko">Finder &rsaquo; 파일 &rsaquo; 새로운 폴더</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="meta-bottom">
+    <span>STAGE&nbsp;&nbsp;OBSERVATION</span>
+    <span>EVENT-DRIVEN &nbsp;·&nbsp; LOCAL-FIRST &nbsp;·&nbsp; CPU ≈ 0</span>
+    <span>FRAME&nbsp;&nbsp;1900 × 900</span>
+  </div>
+
+</div>
+</body>
+</html>
