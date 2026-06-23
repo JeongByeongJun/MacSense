@@ -9,6 +9,7 @@ swiftc \
   -o build/macsense \
   -framework Cocoa \
   -framework ApplicationServices \
+  -framework UserNotifications \
   -lsqlite3
 
 cp resources/shortcuts.json build/shortcuts.json

@@ -55,6 +55,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         }
 
         print("✅ MacSense 시작됨 (메뉴바 💡)")
+        Notifier.show(
+            title: "MacSense 실행 중",
+            subtitle: "데모 준비 완료",
+            message: "반복 행동을 감지하고 있습니다"
+        )
     }
 
     private func setupStatusBar() {
