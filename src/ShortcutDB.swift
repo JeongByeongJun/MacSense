@@ -33,13 +33,15 @@ final class ShortcutDB {
         let exeDir = exe.deletingLastPathComponent()
         let exeParent = exeDir.deletingLastPathComponent()
         let cwd = FileManager.default.currentDirectoryPath
+        let bundleResource = Bundle.main.resourceURL?.appendingPathComponent("shortcuts.json").path
 
         return [
+            bundleResource,
             exeDir.appendingPathComponent("shortcuts.json").path,
             exeParent.appendingPathComponent("resources/shortcuts.json").path,
             "\(cwd)/resources/shortcuts.json",
             "\(cwd)/shortcuts.json"
-        ]
+        ].compactMap { $0 }
     }
 
     func match(app: String, leafLabel: String, path: String) -> ShortcutEntry? {

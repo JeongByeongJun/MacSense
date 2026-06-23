@@ -9,13 +9,13 @@
 cd ~/Desktop/MacSense
 ./build.sh
 ```
-출력: `✅ Built: build/macsense`
+출력: `✅ Built: build/MacSense.app`
 
 ### 권한 부여 (한 번만, 발표 전에)
 1. **시스템 설정 → 개인정보 보호 및 보안 → 접근성**
-   - `+` 눌러서 `build/macsense` 추가, 토글 ON
+   - `+` 눌러서 `build/MacSense.app` 추가, 토글 ON
 2. **시스템 설정 → 개인정보 보호 및 보안 → 입력 모니터링**
-   - 동일하게 `build/macsense` 추가, 토글 ON
+   - 동일하게 `build/MacSense.app` 추가, 토글 ON
 
 ### LLM 키 (선택, AI 데모 시) — Groq, 카드 불필요, 2분 소요
 1. https://console.groq.com 접속 → Google/GitHub 로그인
@@ -97,7 +97,7 @@ rm -f ~/Library/Application\ Support/MacSense/events.db
 데모 시작 전 한 번:
 ```bash
 export GROQ_API_KEY="gsk_..."   # https://console.groq.com/keys 에서 발급
-./build/macsense
+./run.sh
 ```
 메뉴바 상단에 💡 떴는지 확인.
 

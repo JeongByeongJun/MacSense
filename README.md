@@ -22,12 +22,12 @@ MacSense is a macOS menu bar app that observes repeated click/menu patterns and 
 Output:
 
 ```text
-build/macsense
+build/MacSense.app
 ```
 
 ## Runtime Permissions
 
-Grant `build/macsense` permissions in:
+Grant `build/MacSense.app` permissions in:
 
 - System Settings -> Privacy & Security -> Accessibility
 - System Settings -> Privacy & Security -> Input Monitoring
@@ -36,5 +36,5 @@ For AI fallback recommendations:
 
 ```bash
 export GROQ_API_KEY="gsk_..."
-./build/macsense
+./run.sh
 ```

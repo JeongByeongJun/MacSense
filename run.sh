@@ -9,8 +9,12 @@ if [ -f .env ]; then
   set +a
 fi
 
-if [ ! -x build/macsense ]; then
+if [ ! -x build/MacSense.app/Contents/MacOS/MacSense ]; then
   ./build.sh
 fi
 
-./build/macsense
+if [ -n "${GROQ_API_KEY:-}" ]; then
+  launchctl setenv GROQ_API_KEY "$GROQ_API_KEY"
+fi
+
+open -n build/MacSense.app
