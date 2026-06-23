@@ -36,6 +36,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         }
 
         shortcutDB.load()
+        Notifier.configure()
 
         setupStatusBar()
 

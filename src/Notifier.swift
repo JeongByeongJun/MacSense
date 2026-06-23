@@ -1,34 +1,28 @@
-import Foundation
+import Cocoa
 
 enum Notifier {
-    static func show(title: String, subtitle: String? = nil, message: String) {
-        var body = "display notification \"\(escape(message))\""
-        body += " with title \"\(escape(title))\""
-        if let sub = subtitle, !sub.isEmpty {
-            body += " subtitle \"\(escape(sub))\""
-        }
+    private static let delegate = NotificationDelegate()
 
-        let task = Process()
-        task.launchPath = "/usr/bin/osascript"
-        task.arguments = ["-e", body]
-        let errorPipe = Pipe()
-        task.standardError = errorPipe
-        do {
-            try task.run()
-            task.waitUntilExit()
-            if task.terminationStatus != 0 {
-                let data = errorPipe.fileHandleForReading.readDataToEndOfFile()
-                let stderr = String(data: data, encoding: .utf8) ?? ""
-                print("❌ 알림 실패(osascript \(task.terminationStatus)): \(stderr)")
-            }
-        } catch {
-            print("❌ 알림 실패: \(error)")
-        }
+    static func configure() {
+        NSUserNotificationCenter.default.delegate = delegate
     }
 
-    private static func escape(_ s: String) -> String {
-        s
-            .replacingOccurrences(of: "\\", with: "\\\\")
-            .replacingOccurrences(of: "\"", with: "\\\"")
+    static func show(title: String, subtitle: String? = nil, message: String) {
+        DispatchQueue.main.async {
+            let notification = NSUserNotification()
+            notification.title = title
+            notification.subtitle = subtitle
+            notification.informativeText = message
+            notification.soundName = NSUserNotificationDefaultSoundName
+
+            NSUserNotificationCenter.default.deliver(notification)
+        }
+    }
+}
+
+private final class NotificationDelegate: NSObject, NSUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: NSUserNotificationCenter,
+                                shouldPresent notification: NSUserNotification) -> Bool {
+        true
     }
 }
