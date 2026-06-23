@@ -18,6 +18,14 @@ func checkAXPermission() -> Bool {
     return AXIsProcessTrustedWithOptions(opts as CFDictionary)
 }
 
+func hasAXPermission() -> Bool {
+    AXIsProcessTrusted()
+}
+
+func requestInputMonitoringPermission() -> Bool {
+    CGRequestListenEventAccess()
+}
+
 func axString(_ el: AXUIElement, _ attr: String) -> String? {
     var ref: CFTypeRef?
     let result = AXUIElementCopyAttributeValue(el, attr as CFString, &ref)

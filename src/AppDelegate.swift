@@ -23,8 +23,20 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private let recommendableRoles: Set<String> = ["AXMenuItem", "AXButton"]
 
     func applicationDidFinishLaunching(_ notification: Notification) {
-        guard checkAXPermission() else {
-            print("⚠️  접근성 권한 필요. 시스템 설정 → 개인정보 보호 → 접근성에서 허용 후 재실행.")
+        let axAllowed = checkAXPermission()
+        let inputAllowed = requestInputMonitoringPermission()
+        print("🔐 권한 상태: 접근성=\(axAllowed ? "OK" : "필요"), 입력 모니터링=\(inputAllowed ? "OK" : "필요")")
+
+        guard axAllowed else {
+            print("⚠️  접근성 권한 필요: build/MacSense.app 를 손쉬운 사용에서 허용 후 재실행.")
+            openPrivacyPane("x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility")
+            NSApp.terminate(nil)
+            return
+        }
+
+        guard inputAllowed else {
+            print("⚠️  입력 모니터링 권한 필요: build/MacSense.app 를 입력 모니터링에서 허용 후 재실행.")
+            openPrivacyPane("x-apple.systempreferences:com.apple.preference.security?Privacy_ListenEvent")
             NSApp.terminate(nil)
             return
         }
@@ -60,6 +72,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             subtitle: "데모 준비 완료",
             message: "반복 행동을 감지하고 있습니다"
         )
+    }
+
+    private func openPrivacyPane(_ urlString: String) {
+        guard let url = URL(string: urlString) else { return }
+        NSWorkspace.shared.open(url)
     }
 
     private func setupStatusBar() {

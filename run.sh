@@ -17,4 +17,4 @@ if [ -n "${GROQ_API_KEY:-}" ]; then
   launchctl setenv GROQ_API_KEY "$GROQ_API_KEY"
 fi
 
-open -n build/MacSense.app
+exec build/MacSense.app/Contents/MacOS/MacSense
