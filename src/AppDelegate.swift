@@ -187,7 +187,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
             llm.suggest(for: pattern) { [weak self] suggestion in
                 guard let self = self else { return }
-                if let text = suggestion {
+                if let text = suggestion?.trimmingCharacters(in: .whitespacesAndNewlines),
+                   !text.isEmpty {
                     print("🤖 자동화 제안: \(text)")
                     self.recommendationMenuItem.title = "추천: 공식 단축키 없음"
                     self.setAutomationSuggestion(text)

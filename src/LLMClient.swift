@@ -30,7 +30,7 @@ final class LLMClient {
         }
 
         guard let apiKey = apiKey else {
-            DispatchQueue.main.async { completion(nil) }
+            DispatchQueue.main.async { completion(self.fallbackRecipe(for: pattern)) }
             return
         }
 
@@ -58,7 +58,8 @@ final class LLMClient {
         request.timeoutInterval = 10
 
         URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
-            let text = self?.parse(data: data, response: response, error: error)
+            let parsed = self?.parse(data: data, response: response, error: error)
+            let text = self?.usableSuggestion(parsed, for: pattern)
             if let text = text {
                 self?.cacheQueue.sync { self?.cache[key] = text }
             }
@@ -112,5 +113,23 @@ final class LLMClient {
             return nil
         }
         return text.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+
+    private func usableSuggestion(_ text: String?, for pattern: DetectedPattern) -> String {
+        guard let text = text?.trimmingCharacters(in: .whitespacesAndNewlines),
+              !text.isEmpty else {
+            print("⚠️  LLM 응답이 비어 있어 로컬 자동화 레시피 사용")
+            return fallbackRecipe(for: pattern)
+        }
+        return text
+    }
+
+    private func fallbackRecipe(for pattern: DetectedPattern) -> String {
+        let action = pattern.leafLabel.isEmpty ? "반복 작업" : pattern.leafLabel
+        return """
+        방법: Shortcuts에서 "\(action)" 자동화 만들기
+        단계: \(pattern.app) 열기 → 메뉴/버튼 "\(action)" 실행
+        주의: 공식 단축키가 없어 사용자 자동화로 처리
+        """
     }
 }
