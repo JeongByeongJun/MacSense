@@ -17,4 +17,7 @@ if [ -n "${GROQ_API_KEY:-}" ]; then
   launchctl setenv GROQ_API_KEY "$GROQ_API_KEY"
 fi
 
+pkill -x MacSense 2>/dev/null || true
+rm -f "$HOME/Library/Application Support/MacSense/events.db"
+
 exec build/MacSense.app/Contents/MacOS/MacSense
