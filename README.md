@@ -36,5 +36,6 @@ For AI fallback recommendations:
 
 ```bash
 export GROQ_API_KEY="gsk_..."
+./setup_demo.sh
 ./run.sh
 ```

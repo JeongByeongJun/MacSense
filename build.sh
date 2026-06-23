@@ -49,4 +49,6 @@ PLIST
 cp resources/shortcuts.json "$MACOS_DIR/shortcuts.json"
 cp resources/shortcuts.json "$RESOURCES_DIR/shortcuts.json"
 
+codesign --force --deep --sign - "$APP_DIR" >/dev/null
+
 echo "✅ Built: $APP_DIR"

@@ -1,5 +1,7 @@
 .DS_Store
 .env
+/스크린샷 *.png
+/화면 기록 *.mov
 
 # Local agent/tooling state
 .claude/

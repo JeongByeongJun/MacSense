@@ -7,7 +7,7 @@
 ### 빌드
 ```bash
 cd ~/Desktop/MacSense
-./build.sh
+./setup_demo.sh
 ```
 출력: `✅ Built: build/MacSense.app`
 
