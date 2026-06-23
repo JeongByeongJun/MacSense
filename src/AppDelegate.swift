@@ -19,6 +19,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private var automationMenuItem: NSMenuItem!
     private var openShortcutsMenuItem: NSMenuItem!
     private var latestAutomationSuggestion: String?
+    private let supportedApps: Set<String> = ["Finder", "Google Chrome", "Chrome", "Notes", "메모"]
+    private let recommendableRoles: Set<String> = ["AXMenuItem", "AXButton"]
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         guard checkAXPermission() else {
@@ -113,6 +115,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     private func handle(_ event: ClickEvent) {
+        guard shouldTrack(event) else { return }
+
         Storage.shared.insert(event)
 
         sessionClicks += 1
@@ -123,6 +127,13 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         print("🖱 \(event.app) | \(event.path)")
 
         detector.observe(event)
+    }
+
+    private func shouldTrack(_ event: ClickEvent) -> Bool {
+        guard supportedApps.contains(event.app) else { return false }
+        guard recommendableRoles.contains(event.leafRole) else { return false }
+        guard !event.leafLabel.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return false }
+        return true
     }
 
     private func handlePattern(_ pattern: DetectedPattern) {

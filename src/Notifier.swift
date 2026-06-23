@@ -11,8 +11,16 @@ enum Notifier {
         let task = Process()
         task.launchPath = "/usr/bin/osascript"
         task.arguments = ["-e", body]
+        let errorPipe = Pipe()
+        task.standardError = errorPipe
         do {
             try task.run()
+            task.waitUntilExit()
+            if task.terminationStatus != 0 {
+                let data = errorPipe.fileHandleForReading.readDataToEndOfFile()
+                let stderr = String(data: data, encoding: .utf8) ?? ""
+                print("❌ 알림 실패(osascript \(task.terminationStatus)): \(stderr)")
+            }
         } catch {
             print("❌ 알림 실패: \(error)")
         }
